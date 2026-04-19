@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lead Mines | Leadership and Capability Development</title>
+  <meta name="description" content="Lead Mines helps organizations build stronger leaders, smarter learning journeys, and practical capability development systems.">
+  <style>
+    :root {
+      --bg: #f5f1ea;
+      --surface: #fffdf9;
+      --surface-alt: #f0e8dd;
+      --surface-dark: #173248;
+      --text: #1d2935;
+      --muted: #667483;
+      --line: #ded4c6;
+      --primary: #c36a3d;
+      --primary-hover: #a9562c;
+      --secondary: #1f7f78;
+      --secondary-hover: #17645f;
+      --accent: #f2b880;
+      --success: #e5f5ef;
+      --shadow: 0 18px 45px rgba(17, 32, 47, 0.10);
+      --shadow-soft: 0 10px 24px rgba(17, 32, 47, 0.08);
+      --radius-sm: 14px;
+      --radius-md: 22px;
+      --radius-lg: 32px;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-7: 2rem;
+      --space-8: 2.5rem;
+      --space-9: 3rem;
+      --space-10: 4rem;
+      --container: min(1160px, calc(100% - 1.5rem));
+      --header-h: 72px;
+      --font-sans: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(195, 106, 61, 0.16), transparent 24rem),
+        radial-gradient(circle at top right, rgba(31, 127, 120, 0.12), transparent 22rem),
+        linear-gradient(180deg, var(--bg) 0%, #efe6d9 100%);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .container {
+      width: var(--container);
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: var(--space-8) 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(195, 106, 61, 0.12);
+      color: var(--primary-hover);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .section-head {
+      display: grid;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .section-head h2,
+    .section-head h3,
+    .hero-copy h1,
+    .cta-copy h2 {
+      margin: 0;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p,
+    .hero-copy p,
+    .card p,
+    .muted {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--header-h);
+      border-bottom: 1px solid rgba(222, 212, 198, 0.75);
+      backdrop-filter: blur(18px);
+      background: rgba(245, 241, 234, 0.82);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      min-height: var(--header-h);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      min-width: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 1rem;
+      color: #fff;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: var(--shadow-soft);
+      flex-shrink: 0;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong,
+    .brand-copy span {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-copy strong {
+      font-size: 0.98rem;
+    }
+
+    .brand-copy span {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .nav-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.8rem;
+      height: 2.8rem;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .nav-toggle svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    .site-nav {
+      position: fixed;
+      inset: var(--header-h) 0 auto 0;
+      padding: 0.85rem;
+      background: transparent;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-0.5rem);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .site-nav.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .nav-panel {
+      display: grid;
+      gap: var(--space-4);
+      padding: var(--space-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 253, 249, 0.97);
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links,
+    .nav-actions {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .nav-links a {
+      padding: 0.8rem 0.9rem;
+      border-radius: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: var(--surface-alt);
+      outline: none;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 2.95rem;
+      padding: 0.8rem 1.1rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 140ms ease, background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+      width: 100%;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button:active {
+      transform: translateY(0);
+    }
+
+    .button-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .button-primary:hover {
+      background: linear-gradient(135deg, var(--primary-hover), #934a24);
+    }
+
+    .button-secondary {
+      color: var(--text);
+      background: var(--surface);
+      border-color: var(--line);
+    }
+
+    .button-secondary:hover {
+      background: var(--surface-alt);
+    }
+
+    .button-ghost {
+      color: var(--secondary);
+      background: rgba(31, 127, 120, 0.08);
+    }
+
+    .hero {
+      padding: calc(var(--space-8) + var(--space-2)) 0 var(--space-7);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: var(--space-5);
+      align-items: center;
+    }
+
+    .hero-copy,
+    .hero-visual,
+    .card,
+    .highlight,
+    .cta-box,
+    .contact-panel,
+    .footer-card {
+      border: 1px solid rgba(222, 212, 198, 0.82);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 253, 249, 0.84);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-copy,
+    .card,
+    .highlight,
+    .cta-box,
+    .contact-panel,
+    .footer-card {
+      padding: var(--space-5);
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: var(--space-4);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      right: -4rem;
+      bottom: -4rem;
+      width: 11rem;
+      height: 11rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(31, 127, 120, 0.18), transparent 66%);
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2rem, 7vw, 4.9rem);
+    }
+
+    .hero-copy .lead {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: #41515f;
+    }
+
+    .hero-actions {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(31, 127, 120, 0.10);
+      color: var(--surface-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      min-height: 20rem;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      padding: 1rem;
+      border-radius: 1.25rem;
+      background: rgba(23, 50, 72, 0.88);
+      color: #edf5fb;
+    }
+
+    .hero-overlay p {
+      margin: 0.35rem 0 0;
+      color: rgba(237, 245, 251, 0.8);
+      font-size: 0.92rem;
+    }
+
+    .stats-grid,
+    .cards-grid,
+    .process-grid,
+    .footer-grid {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .stats-grid {
+      margin-top: var(--space-5);
+    }
+
+    .stat {
+      padding: var(--space-5);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 253, 249, 0.82);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      color: var(--surface-dark);
+    }
+
+    .card h3,
+    .card h4,
+    .highlight h3,
+    .cta-copy h2,
+    .contact-panel h3,
+    .footer-card h4 {
+      margin: 0 0 0.75rem;
+      line-height: 1.15;
+    }
+
+    .card ul,
+    .contact-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    .highlight {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .media-grid {
+      display: grid;
+      gap: var(--space-3);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .media-grid img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 1.25rem;
+    }
+
+    .process-card {
+      position: relative;
+      padding-top: 3.75rem;
+    }
+
+    .process-index {
+      position: absolute;
+      top: 1.1rem;
+      left: 1.25rem;
+      color: var(--primary);
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .cta-wrap {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .cta-box {
+      display: grid;
+      gap: var(--space-5);
+    }
+
+    .cta-copy {
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .input,
+    .textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: var(--surface);
+      color: var(--text);
+      padding: 0.9rem 1rem;
+      min-height: 3rem;
+    }
+
+    .textarea {
+      min-height: 7.5rem;
+      resize: vertical;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .contact-points {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .contact-chip {
+      display: block;
+      padding: 0.85rem 0.95rem;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: var(--surface);
+      color: var(--muted);
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .social-row a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.8rem;
+      min-height: 2.8rem;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      font-weight: 700;
+    }
+
+    .footer {
+      padding: 0 0 var(--space-7);
+    }
+
+    .footer-grid {
+      padding-top: var(--space-3);
+    }
+
+    .footer-card p,
+    .footer-card li,
+    .footer-card a {
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding-top: var(--space-5);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .floating-bar {
+      position: fixed;
+      left: 0.65rem;
+      right: 0.65rem;
+      bottom: 0.65rem;
+      z-index: 90;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.55rem;
+      padding: 0.55rem;
+      border: 1px solid rgba(222, 212, 198, 0.86);
+      border-radius: 1.25rem;
+      background: rgba(255, 253, 249, 0.94);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .floating-bar .button {
+      min-height: 2.55rem;
+      padding: 0.7rem 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    @media (min-width: 600px) {
+      :root {
+        --container: min(1160px, calc(100% - 2rem));
+      }
+
+      .hero-actions,
+      .nav-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stats-grid,
+      .cards-grid,
+      .process-grid,
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .form-grid .full {
+        grid-column: 1 / -1;
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 900px) {
+      :root {
+        --container: min(1160px, calc(100% - 3rem));
+      }
+
+      .nav-toggle {
+        display: none;
+      }
+
+      .site-nav {
+        position: static;
+        inset: auto;
+        padding: 0;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+
+      .nav-panel {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .nav-actions .button,
+      .nav-links .button,
+      .button {
+        width: auto;
+      }
+
+      .hero {
+        padding: var(--space-10) 0 var(--space-8);
+      }
+
+      .hero-grid,
+      .cta-wrap {
+        grid-template-columns: 1.02fr 0.98fr;
+      }
+
+      .hero-copy,
+      .hero-visual,
+      .cta-box {
+        min-height: 100%;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .cards-grid,
+      .process-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.2fr 1fr 1fr 1fr;
+      }
+
+      .floating-bar {
+        left: auto;
+        right: 1rem;
+        bottom: 1rem;
+        width: min(23rem, calc(100vw - 2rem));
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .section {
+        padding: var(--space-9) 0;
+      }
+
+      .hero-copy,
+      .card,
+      .highlight,
+      .cta-box,
+      .contact-panel,
+      .footer-card {
+        padding: var(--space-6);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Lead Mines home">
+        <span class="brand-mark">LM</span>
+        <span class="brand-copy">
+          <strong>Lead Mines</strong>
+          <span>Leadership and Capability Development</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <nav class="site-nav" id="site-nav" data-nav>
+        <div class="nav-panel">
+          <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#programs">Programs</a>
+            <a href="#insights">Insights</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="nav-actions">
+            <a class="button button-secondary" href="tel:01556969501">Call Now</a>
+            <a class="button button-primary" href="#contact">Book a Call</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Corporate Learning Partner</span>
+          <h1>Build stronger leaders, smarter teams, and practical learning systems.</h1>
+          <p class="lead">Lead Mines helps organizations design leadership programs, capability-building journeys, and talent development experiences that connect learning to real workplace performance.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Request a Discovery Call</a>
+            <a class="button button-secondary" href="#programs">Explore Programs</a>
+          </div>
+          <div class="hero-pills">
+            <span class="pill">Leadership Development</span>
+            <span class="pill">HR Capability Building</span>
+            <span class="pill">Learning Journey Design</span>
+            <span class="pill">Talent Readiness</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img src="https://images.pexels.com/photos/7526590/pexels-photo-7526590.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Workshop and training session">
+          <div class="hero-overlay">
+            <strong>Programs built for real teams</strong>
+            <p>From diagnosis to delivery and follow-through, we shape development solutions around your actual business context.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Why Lead Mines</span>
+          <h2>We go beyond training delivery to design growth that fits the organization.</h2>
+          <p>Strong development work is not only about a workshop. It is about understanding the challenge, selecting the right audience, designing the right learning format, and supporting application after the session ends.</p>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat">
+            <strong>120+</strong>
+            <span>Organizations supported</span>
+          </article>
+          <article class="stat">
+            <strong>4,500+</strong>
+            <span>Learners and managers engaged</span>
+          </article>
+          <article class="stat">
+            <strong>18,000+</strong>
+            <span>Training and facilitation hours</span>
+          </article>
+          <article class="stat">
+            <strong>85+</strong>
+            <span>Custom development programs</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Services</span>
+          <h2>Premium learning and development services for growing teams.</h2>
+          <p>Our work focuses on leadership, capability building, learning strategy, and practical development systems for organizations that want more than one-off training events.</p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card">
+            <h3>Learning Strategy Design</h3>
+            <p>We help organizations identify development priorities, define target groups, and shape a practical roadmap for capability growth.</p>
+          </article>
+          <article class="card">
+            <h3>Leadership Development Programs</h3>
+            <p>We design leadership experiences for new managers, middle managers, and high-potential talent with a strong focus on application.</p>
+          </article>
+          <article class="card">
+            <h3>Capability and Talent Assessment</h3>
+            <p>We support HR and talent teams in evaluating readiness, identifying skill gaps, and turning assessment insights into development action.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container cta-wrap">
+        <article class="highlight">
+          <div class="section-head">
+            <span class="eyebrow">Field Focus</span>
+            <h3>Who we support</h3>
+            <p>We typically work with organizations that need clearer learning structures, stronger managers, or more mature talent development systems.</p>
+          </div>
+          <ul>
+            <li>HR and organizational development teams</li>
+            <li>New managers and middle leaders</li>
+            <li>Internal learning academies and graduate programs</li>
+            <li>High-growth companies and scaling teams</li>
+          </ul>
+        </article>
+
+        <article class="highlight">
+          <div class="section-head">
+            <span class="eyebrow">Visual Story</span>
+            <h3>Built for modern teams</h3>
+            <p>Our approach combines structure, clarity, and practical implementation to make learning more useful in real work environments.</p>
+          </div>
+          <div class="media-grid">
+            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Team collaboration">
+            <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Leadership team meeting">
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Methodology</span>
+          <h2>From diagnosis to behavior change.</h2>
+          <p>We use a simple, focused model to keep development work aligned with organizational needs and easier to implement across teams.</p>
+        </div>
+
+        <div class="process-grid">
+          <article class="card process-card">
+            <span class="process-index">01</span>
+            <h3>Understand the Challenge</h3>
+            <p>We begin with the team context, business need, performance gaps, and audience profile.</p>
+          </article>
+          <article class="card process-card">
+            <span class="process-index">02</span>
+            <h3>Design the Journey</h3>
+            <p>We shape the right mix of sessions, practice, assignments, and follow-up touchpoints.</p>
+          </article>
+          <article class="card process-card">
+            <span class="process-index">03</span>
+            <h3>Activate the Impact</h3>
+            <p>We support implementation and connect learning back to workplace behavior and team performance.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="programs">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Programs</span>
+          <h2>Featured programs with practical outcomes.</h2>
+          <p>Each program is built around a clear audience, a clear development goal, and practical skills that can be used immediately in the workplace.</p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card">
+            <h3>Leadership Essentials Bootcamp</h3>
+            <p>Designed for new managers and team leads who need stronger communication, delegation, accountability, and performance management habits.</p>
+            <ul>
+              <li>Duration: 6 weeks</li>
+              <li>Audience: New managers and team leads</li>
+              <li>Outcome: Better role clarity and team leadership</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>HR Capability Assessor</h3>
+            <p>Supports HR professionals in evaluating skills, reading readiness, and building more useful development recommendations.</p>
+            <ul>
+              <li>Duration: 4 weeks</li>
+              <li>Audience: HR business partners and talent teams</li>
+              <li>Outcome: Stronger assessment and development planning</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Coaching Culture Accelerator</h3>
+            <p>Helps organizations embed stronger feedback, questioning, and manager enablement practices to build a healthier coaching culture.</p>
+            <ul>
+              <li>Duration: 8 weeks</li>
+              <li>Audience: Middle managers and internal coaches</li>
+              <li>Outcome: Better feedback and empowerment practices</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="insights">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Insights</span>
+          <h2>Thoughtful content on leadership, learning, and development.</h2>
+          <p>We added more meaningful domain content so the site speaks clearly to HR teams, learning leaders, and organizational decision-makers.</p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card">
+            <h3>How leadership development connects to business results</h3>
+            <p>Leadership programs become more valuable when they target real issues like decision-making quality, follow-through, team alignment, and manager behavior.</p>
+          </article>
+          <article class="card">
+            <h3>What talent assessment should actually measure</h3>
+            <p>Great assessment looks beyond current performance to include readiness, learning agility, and the support needed for future growth.</p>
+          </article>
+          <article class="card">
+            <h3>How to build a continuous learning culture</h3>
+            <p>Learning becomes sustainable when it is linked to real work, supported by managers, and reinforced through structured follow-up.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <article class="contact-panel">
+          <div class="section-head">
+            <span class="eyebrow">Contact</span>
+            <h2>Start with a short conversation.</h2>
+            <p>Tell us what your team needs and we will suggest the most suitable program, learning format, or development scope.</p>
+          </div>
+          <div class="contact-points">
+            <span class="contact-chip">Phone: 01556969501</span>
+            <span class="contact-chip">Email: support@leadmines.com</span>
+            <span class="contact-chip">Location: Cairo, Egypt</span>
+            <span class="contact-chip">Hours: Sunday to Thursday, 10 AM to 6 PM</span>
+          </div>
+        </article>
+
+        <article class="cta-box">
+          <div class="cta-copy">
+            <span class="eyebrow">Request a Call</span>
+            <h2>Share your need and we’ll guide the next step.</h2>
+            <p class="muted">This lightweight demo keeps form behavior simple and fast. You can later connect it to Formspree, EmailJS, WhatsApp, or your preferred backend.</p>
+          </div>
+
+          <form class="form-grid" data-demo-form>
+            <input class="input" name="name" placeholder="Full name" required>
+            <input class="input" name="company" placeholder="Company name" required>
+            <input class="input" name="phone" placeholder="Phone number" required>
+            <input class="input" type="email" name="email" placeholder="Email address" required>
+            <input class="input full" name="topic" placeholder="Program or topic of interest" required>
+            <textarea class="textarea full" name="message" placeholder="Briefly describe your team need"></textarea>
+            <button class="button button-primary full" type="submit">Submit Request</button>
+          </form>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <article class="footer-card">
+          <h4>Lead Mines</h4>
+          <p>Premium learning and organizational development solutions designed to strengthen teams, leaders, and capability systems.</p>
+        </article>
+        <article class="footer-card">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#programs">Programs</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </article>
+        <article class="footer-card">
+          <h4>Connect</h4>
+          <div class="social-row">
+            <a href="#" aria-label="Facebook">Fb</a>
+            <a href="#" aria-label="Instagram">Ig</a>
+            <a href="#" aria-label="LinkedIn">In</a>
+          </div>
+        </article>
+        <article class="footer-card">
+          <h4>Reach Us</h4>
+          <p>support@leadmines.com</p>
+          <p>01556969501</p>
+          <p>Cairo, Egypt</p>
+        </article>
+      </div>
+      <div class="footer-bottom">
+        <span>Lead Mines</span>
+        <span>All rights reserved 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-bar" aria-label="Quick actions">
+    <a class="button button-secondary" href="tel:01556969501">Call</a>
+    <a class="button button-primary" href="https://wa.me/201556969501" target="_blank" rel="noreferrer">WhatsApp</a>
+  </div>
+
+  <script>
+    const navToggle = document.querySelector("[data-nav-toggle]");
+    const nav = document.querySelector("[data-nav]");
+
+    if (navToggle && nav) {
+      navToggle.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("open");
+          navToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
+    document.querySelectorAll("[data-demo-form]").forEach((form) => {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        alert("Your request was captured locally. You can now connect this form to any service you prefer.");
+        form.reset();
+      });
+    });
+  </script>
+</body>
+</html>
