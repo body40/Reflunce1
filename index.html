@@ -1,1104 +1,620 @@
 <!doctype html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lead Mines | Leadership and Capability Development</title>
-  <meta name="description" content="Lead Mines helps organizations build stronger leaders, smarter learning journeys, and practical capability development systems.">
-  <style>
-    :root {
-      --bg: #f5f1ea;
-      --surface: #fffdf9;
-      --surface-alt: #f0e8dd;
-      --surface-dark: #173248;
-      --text: #1d2935;
-      --muted: #667483;
-      --line: #ded4c6;
-      --primary: #c36a3d;
-      --primary-hover: #a9562c;
-      --secondary: #1f7f78;
-      --secondary-hover: #17645f;
-      --accent: #f2b880;
-      --success: #e5f5ef;
-      --shadow: 0 18px 45px rgba(17, 32, 47, 0.10);
-      --shadow-soft: 0 10px 24px rgba(17, 32, 47, 0.08);
-      --radius-sm: 14px;
-      --radius-md: 22px;
-      --radius-lg: 32px;
-      --space-1: 0.25rem;
-      --space-2: 0.5rem;
-      --space-3: 0.75rem;
-      --space-4: 1rem;
-      --space-5: 1.25rem;
-      --space-6: 1.5rem;
-      --space-7: 2rem;
-      --space-8: 2.5rem;
-      --space-9: 3rem;
-      --space-10: 4rem;
-      --container: min(1160px, calc(100% - 1.5rem));
-      --header-h: 72px;
-      --font-sans: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--font-sans);
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(195, 106, 61, 0.16), transparent 24rem),
-        radial-gradient(circle at top right, rgba(31, 127, 120, 0.12), transparent 22rem),
-        linear-gradient(180deg, var(--bg) 0%, #efe6d9 100%);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input,
-    textarea,
-    select {
-      font: inherit;
-    }
-
-    .container {
-      width: var(--container);
-      margin-inline: auto;
-    }
-
-    .section {
-      padding: var(--space-8) 0;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      padding: 0.45rem 0.85rem;
-      border-radius: 999px;
-      background: rgba(195, 106, 61, 0.12);
-      color: var(--primary-hover);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .section-head {
-      display: grid;
-      gap: var(--space-3);
-      margin-bottom: var(--space-6);
-    }
-
-    .section-head h2,
-    .section-head h3,
-    .hero-copy h1,
-    .cta-copy h2 {
-      margin: 0;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-
-    .section-head p,
-    .hero-copy p,
-    .card p,
-    .muted {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      height: var(--header-h);
-      border-bottom: 1px solid rgba(222, 212, 198, 0.75);
-      backdrop-filter: blur(18px);
-      background: rgba(245, 241, 234, 0.82);
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-4);
-      min-height: var(--header-h);
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-3);
-      min-width: 0;
-    }
-
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 2.8rem;
-      height: 2.8rem;
-      border-radius: 1rem;
-      color: #fff;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      box-shadow: var(--shadow-soft);
-      flex-shrink: 0;
-    }
-
-    .brand-copy {
-      min-width: 0;
-    }
-
-    .brand-copy strong,
-    .brand-copy span {
-      display: block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .brand-copy strong {
-      font-size: 0.98rem;
-    }
-
-    .brand-copy span {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    .nav-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.8rem;
-      height: 2.8rem;
-      border: 1px solid var(--line);
-      border-radius: 1rem;
-      background: var(--surface);
-      color: var(--text);
-      cursor: pointer;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .nav-toggle svg {
-      width: 1.2rem;
-      height: 1.2rem;
-    }
-
-    .site-nav {
-      position: fixed;
-      inset: var(--header-h) 0 auto 0;
-      padding: 0.85rem;
-      background: transparent;
-      pointer-events: none;
-      opacity: 0;
-      transform: translateY(-0.5rem);
-      transition: opacity 180ms ease, transform 180ms ease;
-    }
-
-    .site-nav.open {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .nav-panel {
-      display: grid;
-      gap: var(--space-4);
-      padding: var(--space-4);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: rgba(255, 253, 249, 0.97);
-      box-shadow: var(--shadow);
-    }
-
-    .nav-links,
-    .nav-actions {
-      display: grid;
-      gap: 0.65rem;
-    }
-
-    .nav-links a {
-      padding: 0.8rem 0.9rem;
-      border-radius: 0.9rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      background: var(--surface-alt);
-      outline: none;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      min-height: 2.95rem;
-      padding: 0.8rem 1.1rem;
-      border: 1px solid transparent;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      line-height: 1;
-      cursor: pointer;
-      transition: transform 140ms ease, background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
-      width: 100%;
-    }
-
-    .button:hover {
-      transform: translateY(-1px);
-    }
-
-    .button:active {
-      transform: translateY(0);
-    }
-
-    .button-primary {
-      color: #fff;
-      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
-      box-shadow: var(--shadow-soft);
-    }
-
-    .button-primary:hover {
-      background: linear-gradient(135deg, var(--primary-hover), #934a24);
-    }
-
-    .button-secondary {
-      color: var(--text);
-      background: var(--surface);
-      border-color: var(--line);
-    }
-
-    .button-secondary:hover {
-      background: var(--surface-alt);
-    }
-
-    .button-ghost {
-      color: var(--secondary);
-      background: rgba(31, 127, 120, 0.08);
-    }
-
-    .hero {
-      padding: calc(var(--space-8) + var(--space-2)) 0 var(--space-7);
-    }
-
-    .hero-grid {
-      display: grid;
-      gap: var(--space-5);
-      align-items: center;
-    }
-
-    .hero-copy,
-    .hero-visual,
-    .card,
-    .highlight,
-    .cta-box,
-    .contact-panel,
-    .footer-card {
-      border: 1px solid rgba(222, 212, 198, 0.82);
-      border-radius: var(--radius-lg);
-      background: rgba(255, 253, 249, 0.84);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-    }
-
-    .hero-copy,
-    .card,
-    .highlight,
-    .cta-box,
-    .contact-panel,
-    .footer-card {
-      padding: var(--space-5);
-    }
-
-    .hero-copy {
-      display: grid;
-      gap: var(--space-4);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hero-copy::after {
-      content: "";
-      position: absolute;
-      right: -4rem;
-      bottom: -4rem;
-      width: 11rem;
-      height: 11rem;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(31, 127, 120, 0.18), transparent 66%);
-    }
-
-    .hero-copy h1 {
-      font-size: clamp(2rem, 7vw, 4.9rem);
-    }
-
-    .hero-copy .lead {
-      font-size: clamp(1rem, 3vw, 1.2rem);
-      color: #41515f;
-    }
-
-    .hero-actions {
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .hero-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.55rem 0.8rem;
-      border-radius: 999px;
-      background: rgba(31, 127, 120, 0.10);
-      color: var(--surface-dark);
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-
-    .hero-visual {
-      position: relative;
-      overflow: hidden;
-      padding: 0;
-    }
-
-    .hero-visual img {
-      width: 100%;
-      min-height: 20rem;
-      object-fit: cover;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      left: 1rem;
-      right: 1rem;
-      bottom: 1rem;
-      padding: 1rem;
-      border-radius: 1.25rem;
-      background: rgba(23, 50, 72, 0.88);
-      color: #edf5fb;
-    }
-
-    .hero-overlay p {
-      margin: 0.35rem 0 0;
-      color: rgba(237, 245, 251, 0.8);
-      font-size: 0.92rem;
-    }
-
-    .stats-grid,
-    .cards-grid,
-    .process-grid,
-    .footer-grid {
-      display: grid;
-      gap: var(--space-4);
-    }
-
-    .stats-grid {
-      margin-top: var(--space-5);
-    }
-
-    .stat {
-      padding: var(--space-5);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: rgba(255, 253, 249, 0.82);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 2rem;
-      line-height: 1;
-      margin-bottom: 0.4rem;
-      color: var(--surface-dark);
-    }
-
-    .card h3,
-    .card h4,
-    .highlight h3,
-    .cta-copy h2,
-    .contact-panel h3,
-    .footer-card h4 {
-      margin: 0 0 0.75rem;
-      line-height: 1.15;
-    }
-
-    .card ul,
-    .contact-list {
-      margin: 0;
-      padding-left: 1.1rem;
-      color: var(--muted);
-    }
-
-    .highlight {
-      display: grid;
-      gap: var(--space-4);
-    }
-
-    .media-grid {
-      display: grid;
-      gap: var(--space-3);
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .media-grid img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 1.25rem;
-    }
-
-    .process-card {
-      position: relative;
-      padding-top: 3.75rem;
-    }
-
-    .process-index {
-      position: absolute;
-      top: 1.1rem;
-      left: 1.25rem;
-      color: var(--primary);
-      font-size: 0.95rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-    }
-
-    .cta-wrap {
-      display: grid;
-      gap: var(--space-4);
-    }
-
-    .cta-box {
-      display: grid;
-      gap: var(--space-5);
-    }
-
-    .cta-copy {
-      display: grid;
-      gap: var(--space-3);
-    }
-
-    .form-grid {
-      display: grid;
-      gap: 0.85rem;
-    }
-
-    .input,
-    .textarea {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 1rem;
-      background: var(--surface);
-      color: var(--text);
-      padding: 0.9rem 1rem;
-      min-height: 3rem;
-    }
-
-    .textarea {
-      min-height: 7.5rem;
-      resize: vertical;
-    }
-
-    .contact-grid {
-      display: grid;
-      gap: var(--space-4);
-    }
-
-    .contact-points {
-      display: grid;
-      gap: 0.7rem;
-    }
-
-    .contact-chip {
-      display: block;
-      padding: 0.85rem 0.95rem;
-      border: 1px solid var(--line);
-      border-radius: 1rem;
-      background: var(--surface);
-      color: var(--muted);
-    }
-
-    .social-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .social-row a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 2.8rem;
-      min-height: 2.8rem;
-      padding: 0.75rem 1rem;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      font-weight: 700;
-    }
-
-    .footer {
-      padding: 0 0 var(--space-7);
-    }
-
-    .footer-grid {
-      padding-top: var(--space-3);
-    }
-
-    .footer-card p,
-    .footer-card li,
-    .footer-card a {
-      color: var(--muted);
-    }
-
-    .footer-links {
-      display: grid;
-      gap: 0.65rem;
-    }
-
-    .footer-bottom {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      padding-top: var(--space-5);
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .floating-bar {
-      position: fixed;
-      left: 0.65rem;
-      right: 0.65rem;
-      bottom: 0.65rem;
-      z-index: 90;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.55rem;
-      padding: 0.55rem;
-      border: 1px solid rgba(222, 212, 198, 0.86);
-      border-radius: 1.25rem;
-      background: rgba(255, 253, 249, 0.94);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-    }
-
-    .floating-bar .button {
-      min-height: 2.55rem;
-      padding: 0.7rem 0.75rem;
-      font-size: 0.85rem;
-    }
-
-    @media (min-width: 600px) {
-      :root {
-        --container: min(1160px, calc(100% - 2rem));
-      }
-
-      .hero-actions,
-      .nav-actions {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .stats-grid,
-      .cards-grid,
-      .process-grid,
-      .footer-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .form-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .form-grid .full {
-        grid-column: 1 / -1;
-      }
-
-      .contact-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (min-width: 900px) {
-      :root {
-        --container: min(1160px, calc(100% - 3rem));
-      }
-
-      .nav-toggle {
-        display: none;
-      }
-
-      .site-nav {
-        position: static;
-        inset: auto;
-        padding: 0;
-        opacity: 1;
-        transform: none;
-        pointer-events: auto;
-      }
-
-      .nav-panel {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 0;
-        border: 0;
-        border-radius: 0;
-        background: transparent;
-        box-shadow: none;
-      }
-
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 0.35rem;
-      }
-
-      .nav-actions {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-      }
-
-      .nav-actions .button,
-      .nav-links .button,
-      .button {
-        width: auto;
-      }
-
-      .hero {
-        padding: var(--space-10) 0 var(--space-8);
-      }
-
-      .hero-grid,
-      .cta-wrap {
-        grid-template-columns: 1.02fr 0.98fr;
-      }
-
-      .hero-copy,
-      .hero-visual,
-      .cta-box {
-        min-height: 100%;
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .cards-grid,
-      .process-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .footer-grid {
-        grid-template-columns: 1.2fr 1fr 1fr 1fr;
-      }
-
-      .floating-bar {
-        left: auto;
-        right: 1rem;
-        bottom: 1rem;
-        width: min(23rem, calc(100vw - 2rem));
-      }
-    }
-
-    @media (min-width: 1200px) {
-      .section {
-        padding: var(--space-9) 0;
-      }
-
-      .hero-copy,
-      .card,
-      .highlight,
-      .cta-box,
-      .contact-panel,
-      .footer-card {
-        padding: var(--space-6);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        transition: none !important;
-        animation: none !important;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من نحن | ليدمايندز لتطوير القيادات وبناء القدرات</title>
+    <meta name="description" content="تعرف على ليدمايندز، الشريك الاستراتيجي الرائد في قطاع التدريب والتطوير وتأهيل الشهادات المهنية الدولية وتطوير القيادات وتفعيل الاستراتيجية.">
+    <meta name="keywords" content="من نحن, LeadMinds, موارد بشرية, تدريب, تطوير مؤسسي">
+    <meta property="og:title" content="من نحن | LeadMinds لحلول الموارد البشرية والتدريب">
+    <meta property="og:description" content="تعرف على LeadMinds، شركة متخصصة في حلول الموارد البشرية والتدريب والتطوير المؤسسي، تساعد الشركات على بناء فرق عمل قوية وتحقيق نمو مستدام.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/hero-home/hero-2.png">
+    <meta property="og:url" content="about.html">
+    <link rel="canonical" href="about.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css?v=3.3">
+    <script defer src="assets/js/main.js?v=3.3"></script>
+    <script defer src="assets/js/about-animations.js?v=1.4"></script></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#home" aria-label="Lead Mines home">
-        <span class="brand-mark">LM</span>
-        <span class="brand-copy">
-          <strong>Lead Mines</strong>
-          <span>Leadership and Capability Development</span>
-        </span>
-      </a>
+<body class="about-page" data-theme="light">
+<header class="site-header premium-header">
+        <div class="container header-shell">
+            <a class="brand brand-saas" href="index.html" aria-label="العودة إلى الرئيسية">
+                <img src="assets/images/logo.png" alt="LeadMinds Logo" style="height: 42px; width: auto; display: block;">
+            </a>
 
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-      </button>
+            <nav class="site-nav site-nav-saas" id="site-nav" aria-label="التنقل الرئيسي" data-nav>
+                <div class="nav-panel">
+                    <div class="drawer-header">
+                        <a href="index.html" class="drawer-logo-link">
+                            <img src="assets/images/logo.png" alt="LeadMinds Logo" class="brand-img">
+                        </a>
+                        <button class="drawer-close-btn" aria-label="إغلاق القائمة" data-nav-close>
+                            <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 20px; height: 20px;">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="drawer-content">
+                        <div class="navigation-container">
+                            <ul class="nav-list nav-list-saas">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html">الرئيسية</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link is-active" href="about.html">من نحن</a>
+                                </li>
+                                <li class="nav-item nav-item-dropdown" data-nav-dropdown>
+                                    <a class="nav-link nav-dropdown-toggle" href="#" data-nav-dropdown-toggle aria-expanded="false">
+                                        الدورات
+                                        <span class="nav-dropdown-caret" aria-hidden="true">▼</span>
+                                    </a>
+                                    <div class="nav-dropdown-menu">
+                                        <a class="nav-dropdown-link" href="courses.html">جميع البرامج التدريبية</a>
+                                        <a class="nav-dropdown-link" href="specialized-programs.html">البرامج التخصصية</a>
+                                        <a class="nav-dropdown-link" href="course-hr-capability-accelerator.html">برنامج تسريع قدرات الموارد البشرية (HRCA)</a>
+                                        <a class="nav-dropdown-link" href="course-leadership-foundations-bootcamp.html">معسكر أساسيات القيادة (LFB)</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item nav-item-dropdown" data-nav-dropdown>
+                                    <a class="nav-link nav-dropdown-toggle" href="#" data-nav-dropdown-toggle aria-expanded="false">
+                                        منهجية العمل
+                                        <span class="nav-dropdown-caret" aria-hidden="true">▼</span>
+                                    </a>
+                                    <div class="nav-dropdown-menu">
+                                        <a class="nav-dropdown-link" href="methodology.html">منهجية العمل</a>
+                                        <a class="nav-dropdown-link" href="partners.html">شركاء النجاح</a>
+                                        <a class="nav-dropdown-link" href="case-studies.html">دراسة حالة</a>
+                                        <a class="nav-dropdown-link" href="corporate-training.html">تدريب الشركات والجهات الحكومية</a>
+                                        <a class="nav-dropdown-link" href="international-certifications.html">الشهادات الاحترافية الدولية</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="blog.html">المقالات المعرفية</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">تواصل معنا</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="drawer-cta-group">
+                            <a class="button button-primary" href="contact.html">احجز مكالمة</a>
+                        </div>
+                    </div>
+                    <div class="drawer-footer-bottom">
+                        <div class="drawer-lang-switcher">
+                            <a href="#" class="active-lang">AR</a>
+                            <span class="lang-divider">|</span>
+                            <a href="about-en.html">EN</a>
+                        </div>
+                        <button class="header-tool header-tool-circle button-reset drawer-theme-toggle" type="button" data-theme-toggle aria-label="تبديل المظهر">
+                            <span aria-hidden="true">&#9681;</span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
 
-      <nav class="site-nav" id="site-nav" data-nav>
-        <div class="nav-panel">
-          <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#programs">Programs</a>
-            <a href="#insights">Insights</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <div class="nav-actions">
-            <a class="button button-secondary" href="tel:01556969501">Call Now</a>
-            <a class="button button-primary" href="#contact">Book a Call</a>
-          </div>
+            <div class="nav-cta nav-cta-saas">
+                <button class="header-search-btn" aria-label="بحث">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </button>
+                <div class="header-divider"></div>
+                
+                <div class="cta-group">
+                    <a class="button header-btn-primary" href="contact.html">
+                        احجز مكالمة
+                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <div class="header-utils">
+                    <a class="header-tool header-tool-circle" href="about-en.html" aria-label="تبديل اللغة">EN</a>
+                    <button class="header-tool header-tool-circle button-reset" type="button" data-theme-toggle aria-label="الوضع الداكن"><span aria-hidden="true">&#9681;</span></button>
+                </div>
+
+                <button class="nav-toggle nav-toggle-saas button-reset" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
         </div>
-      </nav>
+    </header>
+
+
+<main>
+    <section class="page-hero hero-showcase">
+        <div class="container page-hero-grid">
+            <div class="page-hero-copy section-head">
+                <!-- <span class="eyebrow">من نحن</span> -->
+                <h1>من نحن</h1>
+                <p>تأسست ليدمايندز لتكون الشريك الاستراتيجي الرائد في قطاع التدريب والتطوير، من خلال صياغة حلول تدريبية مبتكرة تلبي تطلعات الأفراد والمؤسسات، وتسهم في بناء قدرات مستدامة تحقق الأثر والتميز في بيئات العمل المعاصرة.</p>
+                <p>نحن نلتزم بتمكين الأفراد والمؤسسات من تحقيق أهدافهم الاستراتيجية، وقيادة التحول وصناعة الفارق من خلال التركيز على جوهر خدماتنا وتأهيل المتدربين لاجتياز اختبارات الشهادات الدولية الاحترافية في الموارد البشرية، وتطوير قيادات مهنية متميزة قادرة على قيادة التحول.</p>
+                <p>نحن نلتزم بتمكين الأفراد والمؤسسات من تحقيق أهدافهم الاستراتيجية، وقيادة التحول وصناعة الفارق من خلال التركيز على جوهر خدماتنا التالية : (انفوجرافيك)
+                </p>
+            </div>
+            <div class="page-hero-media"><img src="assets/images/hero-home/hero-2.png" alt="من نحن"></div>
+        </div>
+    </section>
+
+        <!-- Services Infographic Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-head section-head-center">
+                <span class="eyebrow">انفوجرافيك</span>
+                <h2> التركيز على جوهر خدماتنا التالية </h2>
+            </div>
+            <div class="cards-grid reason-grid infographic-swap-grid">
+                <div class="infographic-swap-wrapper active">
+                    <article class="card dynamic-card reason-card about-card">
+                        <div class="card-icon-container">
+                            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="7"/>
+                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                            </svg>
+                        </div>
+                        <h3>التأهيل للشهادات المهنية الدولية</h3>
+                        <p>تمكين المتدربين واجتيازهم للاعتمادات المهنية في الموارد البشرية.</p>
+                    </article>
+                </div>
+                <div class="infographic-swap-wrapper">
+                    <article class="card dynamic-card reason-card about-card">
+                        <div class="card-icon-container">
+                            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                                <path d="M6 6h10M6 10h10"/>
+                            </svg>
+                        </div>
+                        <h3>البرامج التخصصية</h3>
+                        <p>تقديم حلول تطويرية متقدمة في مجالات الموارد البشرية، والإدارة والتنظيم.</p>
+                    </article>
+                </div>
+                <div class="infographic-swap-wrapper">
+                    <article class="card dynamic-card reason-card about-card">
+                        <div class="card-icon-container">
+                            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </div>
+                        <h3>⦁	حلول التدريب  للشركات والجهات الحكومية</h3>
+                        <p>⦁	 ⦁	 مراكز التقييم (ِAssessment Centers): تفعيل أدوات تقييم متطورة لقياس الجدارات، وتحديد الفجوات المهارية، ودعم قرارات التعيين والترقيات.
+                            تصميم الحقائب التدريبية: تقديم حلول تطويرية متقدمة تدعم الأهداف الاستراتيجية للجهات.</p>
+                    </article>
+                </div>
+                <div class="infographic-swap-wrapper">
+                    <article class="card dynamic-card reason-card about-card">
+                        <div class="card-icon-container">
+                            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                        </div>
+                        <h3>حلول التدريب للشركات والجهات الحكومية - مراكز التقييم (Assessment Centers)</h3>
+                        <p>تفعيل أدوات تقييم متطورة لقياس الجدارات، وتحديد الفجوات المهارية، ودعم قرارات التعيين والترقيات.</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision, Mission and Values Header -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head section-head-center">
+                <span class="eyebrow">الرؤية والرسالة</span>
+                <h2>الرؤية، الرسالة والقيم</h2>
+            </div>
+            <div class="cards-grid reason-grid vision-mission-grid">
+                <div class="swap-wrapper active">
+                    <article class="card dynamic-card reason-card about-card">
+                        <div class="card-icon-container">
+                            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </div>
+                        <h3>رؤيتنا</h3>
+                        <p>أن نُشكل ونقود العقول نحو التميز المستدام من خلال تحويل الإمكانات إلى قدرات، والقدرات إلى نتائج ملموسة، عبر حلول متكاملة في تطوير رأس المال البشري.</p>
+                    </article>
+                </div>
+                <div class="swap-wrapper">
+                    <article class="card dynamic-card reason-card about-card">
+                        <div class="card-icon-container">
+                            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                            </svg>
+                        </div>
+                        <h3>رسالتنا</h3>
+                        <p>نستثمر خبراتنا العالمية لصناعة أثرٍ محليٍ مستدام؛ عبر تمكين العقول وقيادة تحول المنشآت، ملتزمين بالنزاهة والتميز في التنفيذ لنصنع لعملائنا نتائج استثنائية.</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head section-head-center">
+                <span class="eyebrow">قيمنا</span>
+                <h2>المبادئ الراسخة التي تحدد ممارساتنا اليومية</h2>
+            </div>
+            <div class="cards-grid reason-grid">
+                <article class="card dynamic-card reason-card about-card">
+                    <div class="card-icon-container">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="m9 12 2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>نزاهة لا تهاون فيها (Uncompromising Integrity)</h3>
+                    <p>نعمل بشفافية مطلقة وإشراف أخلاقي، ونقوم بدور المستشار الموثوق الذي يضع السرية والعدالة والامتثال كأولوية في كل تعامل مهني.</p>
+                </article>
+                <article class="card dynamic-card reason-card about-card">
+                    <div class="card-icon-container">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                        </svg>
+                    </div>
+                    <h3>المرونة والاستجابة الديناميكية (Agility & Resilience)</h3>
+                    <p>نتكيف بسرعة وكفاءة مع متغيرات قطاع الأعمال، ونحول التحديات إلى فرص نوعية، من خلال تبني ممارسات مرنة وحلول مبتكرة تضمن استمرارية النجاح وتدعم استدامة الأثر لعملائنا في مختلف الظروف.</p>
+                </article>
+                <article class="card dynamic-card reason-card about-card">
+                    <div class="card-icon-container">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="m9 12 2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>التميز في التنفيذ (Excellence in Execution)</h3>
+                    <p>كل مبادرة لدينا مدفوعة بمنهجية صارمة ومنظمة، مما يضمن الشفافية الكاملة، والمساءلة الثابتة، ونتائج عالية التأثير وقابلة للقياس عبر جميع مشاركاتنا.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-head section-head-center">
+                <span class="eyebrow">لماذا ليدمايندز؟</span>
+                <h2>لماذا تختار ليدمايندز كشريك للتدريب والتطوير؟</h2>
+            </div>
+            <div class="cards-grid reason-grid why-grid">
+                <article class="card dynamic-card reason-card about-card">
+                    <div class="card-icon-container">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>خبراء ممارسون، لا أكاديميون فقط</h3>
+                    <p>نؤمن بأن المعرفة الحقيقية تأتي من الميدان؛ لذلك صُممت برامجنا ويقودها خبراء ممارسون يمتلكون باعاً طويلاً وخبرة عريضة في قيادة قطاعات الموارد البشرية وتطوير الحوكمة المؤسسية، لينقلوا إليكم خبراتهم وتجاربهم الواقعية وتحديات سوق العمل الحقيقية.</p>
+                </article>
+                <article class="card dynamic-card reason-card about-card">
+                    <div class="card-icon-container">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                            <path d="m9 10 2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>محاكاة واقعية وجاهزية تامة للاختبارات</h3>
+                    <p>لا نكتفي بالشرح النظري، بل نعمل على تمكينكم ورفع جاهزيتكم الكاملة لاجتياز الاختبارات الدولية؛ من خلال توفير بيئة محاكاة متطورة تشمل بنوك أسئلة تفاعلية واختبارات تجريبية تضعكم في أجواء الاختبار الحقيقي وتدعم تفوقكم المهني.</p>
+                </article>
+                <article class="card dynamic-card reason-card about-card">
+                    <div class="card-icon-container">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="7"/>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                        </svg>
+                    </div>
+                    <h3>جودة (بمعايير عالمية وموثوقية عالية)</h3>
+                    <p>نلتزم بتقديم محتوى تعليمي وتدريبي يطابق أدق، وأحدث المعايير الدولية، لتهيئة تجربة ثرية تجمع بين رصانة المعرفة وسهولة التطبيق الميداني الذي يلبي تطلعاتكم.</p>
+                </article>
+                <article class="card dynamic-card reason-card about-card">
+                    <div class="card-icon-container">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"/>
+                            <line x1="12" y1="20" x2="12" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="14"/>
+                            <path d="M3 20h18"/>
+                        </svg>
+                    </div>
+                    <h3>استثمار وأثر (عائد ملموس وتغيير مستدام)</h3>
+                    <p>نرتكز في تصميم برامجنا على تحقيق أعلى عائد على الاستثمار (ROI) للأفراد والمنظمات، عبر التركيز على المهارات التي تنعكس مباشرة على تحسين الأداء المؤسسي، وترك أثر إيجابي ومستدام يمتد في مسيرتكم المهنية ونتائج أعمالكم.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founders' Message -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head section-head-center">
+                <span class="eyebrow">رسالة المؤسسين</span>
+                <h2>استدامة النمو تبدأ بتمكين رأس المال البشري</h2>
+            </div>
+            <article class="card dynamic-card story-card" style="max-width: 850px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.15rem; line-height: 1.8; font-style: italic; color: var(--text);">"نؤمن في ليدمايندز بأن استدامة نمو الأعمال وازدهار الاقتصاد يرتكزان بالدرجة الأولى على تمكين الأفراد والمؤسسات ورفع الكفاءة المهنية لرأس المال البشري. وتماشياً مع رؤية المملكة الطموحة لتبني أفضل الممارسات العالمية، نلتزم في ليدمايندز بتقديم حلول تدريبية نوعية تمزج بين الخبرة الميدانية العميقة وأحدث المعايير المعتمدة للشهادات الدولية المهنية، لتأهيل الطاقات الفردية وتطوير القدرات المؤسسية، صانعين بذلك شراكة حقيقية تضمن تميزكم المهني وتفوقكم المستدام."</p>
+                <div class="mini-chip-row" style="margin-top: 1.5rem; justify-content: center;">
+                     <span>عبدالإله الأحمدي</span>
+                     <span>عصام البنا</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Executive Management Team -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-head section-head-center">
+                <h2>الفريق الإداري التنفيذي</h2>
+            </div>
+            <div class="cards-grid story-grid team-swap-grid">
+                <div class="team-swap-wrapper active">
+                    <article class="card dynamic-card story-card about-card" data-profile-index="0">
+                        <div class="team-img-container">
+                            <img loading="lazy" src="assets/images/team/abdulelah.jpg" alt="عبدالإله الأحمدي">
+                        </div>
+                        <div class="team-card-info">
+                            <h3>عبدالإله الأحمدي</h3>
+                            <p class="role">الشريك المؤسس | الشريك الإداري | خبير استراتيجي في الموارد البشرية ومستشار الحوكمة المؤسسية</p>
+                        </div>
+                        <ul class="team-bullets">
+                            <li><strong>الشهادات الدولية والمهنية:</strong> SHRM-CP / SPHRi / HRBP</li>
+                            <li><strong>سنوات الخبرة:</strong> 25 عاماً من الخبرة القيادية لإدارات الموارد البشرية في السوق السعودي</li>
+                        </ul>
+                        <p class="bio-preview">يمتلك خبرة قيادية ممتدة في قيادة وظائف الموارد البشرية والحوكمة المؤسسية في كبرى المجموعات والشركات السعودية، بما في ذلك مجموعة المرجان القابضة، شركة قودي، شركة الإتصالات السعودية، ومجموعة شركات الحمراني. يتخصص في هندسة الهياكل التنظيمية، وتطوير مصفوفة الصلاحيات، وتصميم عمليات الموارد البشرية، وصياغة السياسات والإجراءات بأفضل الممارسات العالمية، إضافة إلى تطوير استراتيجيات ثقافة العمل وإدارة الأداء. كما يمتلك خبرة في بناء وإدارة أكاديميات التدريب المؤسسي. ويتميز بقدرته على تحويل المفاهيم النظرية والأنظمة واللوائح إلى أدوات عملية قابلة للتطبيق، تمكّن المؤسسات من بناء بيئات عمل مرنة، عالية الأداء، ومستدامة.</p>
+                        <button class="button button-secondary read-more-btn" aria-label="اقرأ المزيد عن عبدالإله الأحمدي">قراءة المزيد</button>
+                    </article>
+                </div>
+                <div class="team-swap-wrapper">
+                    <article class="card dynamic-card story-card about-card" data-profile-index="1">
+                        <div class="team-img-container">
+                            <img loading="lazy" src="assets/images/team/essam.jpg" alt="عصام البنا">
+                        </div>
+                        <div class="team-card-info">
+                            <h3>عصام البنا</h3>
+                            <p class="role">الشريك المؤسس | الشريك الإداري | المستشار الرئيسي والمرشد المهني</p>
+                        </div>
+                        <ul class="team-bullets">
+                            <li><strong>الشهادات الدولية والمهنية:</strong> SHRM-SCP / SHRM-CP / SPHRi</li>
+                            <li><strong>سنوات الخبرة:</strong> أكثر من 27 عامًا في التحول في الموارد البشرية وتطوير القيادات</li>
+                        </ul>
+                        <p class="bio-preview">عصام البنا مستشار موارد بشرية، مدرب تنفيذي، مقيم معتمد، مدرب للشهادات المهنية في الموارد البشرية، ومرشد مهني، يتمتع بخبرة تتجاوز 27 عامًا في التحول في الموارد البشرية، تطوير القيادات، تقييم المواهب، بناء أطر الجدارات، إدارة الأداء، وتنفيذ الاستراتيجية. يحمل اعتمادات SHRM-SCP, SHRM-CP, SPHRi، ويقدم برامج التأهيل للشهادات المهنية في الموارد البشرية داخل المملكة العربية السعودية منذ عام 2012. كان عصام من أوائل قادة الموارد البشرية الذين تم اختيارهم للمشاركة في المرحلة التجريبية لاختبارات SHRM، ومن أوائل الحاصلين على الاعتماد في المنطقة. وخلال مسيرته المهنية، دعم أكثر من 1000 من مهنيي وقادة الموارد البشرية في رحلاتهم نحو الشهادات المهنية، بما يشمل SHRM و HRCI و CIPD. كما قدم برامج CIPD Level 3 و Level 5. ولا يقتصر دور عصام على التدريب فقط؛ بل يُعرف بأسلوبه الإرشادي القريب من الممارسة، حيث يساعد مهنيي الموارد البشرية على فهم المهنة بعمق، وبناء الثقة، وتطوير الحكم المهني، والنمو ليصبحوا شركاء أعمال وقادة أكثر تأثيرًا. يجمع أسلوبه بين العمق المهني، والأمثلة العملية، والبصيرة السلوكية، والفهم القوي لسياق الأعمال في المملكة والخليج.</p>
+                        <button class="button button-secondary read-more-btn" aria-label="اقرأ المزيد عن عصام البنا">قراءة المزيد</button>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Experts & Trainers -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head section-head-center">
+                <h2>فريق خبراء التدريب والمدربين</h2>
+            </div>
+            
+            <div class="experts-intro-section">
+                <div class="experts-intro-content">
+                    <p class="intro-p">تعمل ليدمايندز مع شبكة مختارة من المدربين، والمستشارين، والمدربين التنفيذيين، والخبراء المتخصصين الذين يمتلكون خبرة عملية وقدرة قوية على التنفيذ.</p>
+                    <p class="intro-p">ساعد نموذج الخبراء لدى ليدمايندز على ربط كل برنامج بالخبرة المناسبة، بما يضمن الملاءمة، والمصداقية، والأثر العملي.</p>
+                    
+                    <div class="experts-criteria">
+                        <h3>يتم اختيار كل خبير بناءً على:</h3>
+                        <ul class="criteria-list">
+                            <li>الخبرة العملية في المجال التخصصي.</li>
+                            <li>القدرة على ربط المفاهيم بالتطبيق في بيئة العمل.</li>
+                            <li>فهم ثقافة الأعمال في السعودية والخليج.</li>
+                            <li>مهارات قوية في التيسير وإشراك المشاركين.</li>
+                            <li>الالتزام بمعايير ليدمايندز في الجودة والمهنية والأثر.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="infographic-container">
+                    <h3>منهجنا في اختيار الخبراء (انفوجرافيك)</h3>
+                    <div class="infographic-grid">
+                        <div class="info-step">
+                            <div class="info-step-num">01</div>
+                            <h4>يقوده خبراء</h4>
+                            <p>يتم تنفيذ البرامج من خلال ممارسين، ومستشارين، ومدربين تنفيذيين، ومرشدين لديهم خبرة ميدانية مباشرة.</p>
+                        </div>
+                        <div class="info-step">
+                            <div class="info-step-num">02</div>
+                            <h4>يراعي السياق المحلي</h4>
+                            <p>يتم تكييف التعلم مع واقع بيئة الأعمال في السعودية والخليج.</p>
+                        </div>
+                        <div class="info-step">
+                            <div class="info-step-num">03</div>
+                            <h4>يركز على التطبيق</h4>
+                            <p>يركز التنفيذ على الأدوات، والأمثلة، والنقاشات العملية، والتمارين، والاستخدام الواقعي.</p>
+                        </div>
+                        <div class="info-step">
+                            <div class="info-step-num">04</div>
+                            <h4>موجه بالنتائج</h4>
+                            <p>يُتوقع من كل خبير مساعدة المشاركين على الانتقال من الفهم إلى التطبيق.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <div class="cards-grid story-grid experts-swap-grid">
+                <div class="expert-swap-wrapper active">
+                    <article class="card dynamic-card story-card about-card" data-profile-index="2">
+                        <div class="team-img-container">
+                            <img loading="lazy" src="assets/images/team/mike.jpg" alt="مايك هوف">
+                        </div>
+                        <div class="team-card-info">
+                            <h3>الخبير المميز: مايك هوف</h3>
+                            <p class="role">مستشار ومدرب | مرشد أعمال | مدرب قيادة تنفيذية</p>
+                        </div>
+                        <ul class="team-bullets">
+                            <li>التخطيط الاستراتيجي للأعمال</li>
+                            <li>ورش تنفيذ الاستراتيجية</li>
+                            <li>التدريب التنفيذي والإرشاد في الأعمال</li>
+                            <li>مواءمة فرق القيادة وتطوير الفرق عالية الأداء</li>
+                        </ul>
+                        <p class="bio-preview">مايك هوف هو مستشار ومدرب ومرشد قيادة تنفيذية يتمتع بخبرة واسعة في الشرق الأوسط. شغل مناصب قيادية عليا في مؤسسات متعددة الجنسيات، وله سجل قوي في تحفيز الفرق، ومواءمة الأفراد حول الأهداف الاستراتيجية، ومساعدة القادة على تحويل الاستراتيجية إلى تنفيذ عملي. مايك جزء من شبكة خبراء ومدربي ليدمايندز، ويتم تقديمه كمستشار ومدرب ومرشد أعمال ومدرب قيادة تنفيذية.</p>
+                        <button class="button button-secondary read-more-btn" aria-label="اقرأ المزيد عن مايك هوف">قراءة المزيد</button>
+                    </article>
+                </div>
+                
+                <div class="expert-swap-wrapper">
+                    <article class="card dynamic-card story-card about-card" data-profile-index="3">
+                        <div class="team-img-container">
+                            <img loading="lazy" src="assets/images/team/craig.jpg" alt="كريغ هايلز">
+                        </div>
+                        <div class="team-card-info">
+                            <h3>المستشار المميز: كريغ هايلز</h3>
+                            <p class="role">مستشار ومدرب | مرشد أعمال | مدرب قيادة تنفيذية</p>
+                        </div>
+                        <ul class="team-bullets">
+                            <li>التخطيط الاستراتيجي ومواءمة الأعمال</li>
+                            <li>تنفيذ الاستراتيجيات وتحويلها إلى واقع عملي</li>
+                            <li>التدريب التنفيذي وتطوير القادة</li>
+                            <li>بناء وتطوير الفرق عالية الأداء</li>
+                        </ul>
+                        <p class="bio-preview">كريغ هايلز هو المؤسس والعضو المنتدب والمستشار الرئيسي لشركة "كريغ هايلز للاستشارات". يتمتع بخبرة واسعة تمتد لأكثر من 30 عاماً في الشرق الأوسط وأوروبا، شغل خلالها مناصب مؤسسية ناجحة في مجالات العمليات، والمبيعات، والتسويق، والتدريب. يمتلك سجلاً قوياً في تقديم الخدمات الاستشارية، والتدريب، والتوجيه عبر الثقافات المختلفة لمؤسسات متعددة الجنسيات في قطاعات متنوعة. اليوم، يتخصص كريغ في مجالات الاستراتيجية، والمواءمة، والتنفيذ. وقد عمل مع كبرى الشركات العالمية والجهات الإقليمية في قطاعات (B2B & B2C)، ومن أبرزها: أرامكو السعودية، واتصالات، وبنك الإمارات دبي الوطني، مايكروسوفت، وتويوتا، وشل، ويونيليفر، وبي إن جي، ومعهد الخدمات المصرفية في السعودية. حاز كريغ على العديد من الجوائز العالمية المرموقة في مجالات خدمة العملاء، والاتصال المرئي، وتميز الأعمال في الشرق الأوسط. وهو ميسّر رئيسي معتمد (Master Facilitator) لبرامج فرانكلين كوفي (FranklinCovey)، وشريك مرخص لـ (Wiley)، بالإضافة إلى كونه عضواً في معاهد دولية بارزة مثل معهد الأفراد والتنمية البريطاني (CIPD) ومعهد إدارة المشاريع (APM)، وممارس متقدم في البرمجة اللغوية العصبية (NLP). كريغ جزء من شبكة خبراء ومدربي ليدمايندز، ويتم تقديمه كمستشار ومدرب ومرشد أعمال ومدرب قيادة تنفيذية.</p>
+                        <button class="button button-secondary read-more-btn" aria-label="اقرأ المزيد عن كريغ هايلز">قراءة المزيد</button>
+                    </article>
+                </div>
+                
+                <div class="expert-swap-wrapper">
+                    <article class="card dynamic-card story-card about-card" data-profile-index="4">
+                        <div class="team-img-container">
+                            <img loading="lazy" src="assets/images/team/hisham.jpg" alt="هشام نابي">
+                        </div>
+                        <div class="team-card-info">
+                            <h3>المدرب المميز: هشام نابي</h3>
+                            <p class="role">مستشار ومدرب | مرشد أعمال | مدرب قيادة تنفيذية</p>
+                        </div>
+                        <ul class="team-bullets">
+                            <li>تحول رأس المال البشري والتطوير التنظيمي</li>
+                            <li>تأسيس وإدارة مراكز التقييم والتطوير</li>
+                            <li>التدريب والتوجيه التنفيذي والمهني</li>
+                            <li>إجراء المقابلات القائمة على الجدارات والاختبارات النفسية</li>
+                        </ul>
+                        <p class="bio-preview">هشام نابي هو مستشار أول في الإدارة والموارد البشرية ومقيّم معتمد يتمتع بخبرة واسعة تمتد لأكثر من 20 عاماً في الشرق الأوسط. يركز بشكل أساسي على إدارة المواهب واستقطابها، والتدريب والتوجيه، ومراكز التقييم والتطوير. يمتلك سجلاً قوياً في قيادة تحول رأس المال البشري، والتطوير التنظيمي في الشركات الناشئة، والمنظمات القائمة، والجهات الخاصة، والعامة، وشبه الحكومية. اليوم، يتخصص هشام في تحويل رأس المال البشري وتطوير القادة. وقد عمل مع مجموعة واسعة من كبرى الجهات الحكومية والشركات في قطاعات متعددة تشمل الطيران، والاتصالات، والقطاع المالي، والمنظمات الخيرية، ومن أبرز عملائه: صندوق الاستثمارات العامة (PIF)، ووزارات الخارجية والمالية والإسكان والاتصالات، هيئة الزكاة والضريبة والجمارك (ZATCA)، ومؤسسة مسك، وشركات الاتصالات (STC وموبايلي وعمان تل)، وبنك الراجحي والبنك الأهلي السعودي (SNB). يحمل هشام دبلوم عالي في إدارة الأعمال من جامعة ليفربول، وهو مقيّم محترف معتمد من الجمعية النفسية البريطانية (BPS) والاتحاد الأوروبي لجمعيات علماء النفس (EFPA). كما أنه ممارس معتمد للعديد من أدوات القياس النفسي والسلوكي العالمية مثل Hogan وSaville وKorn Ferry، ومصنف كمدرب حياة ومهنة وتنفيذي معتمد من معهد (Goal Imagery) الدولي. هشام جزء من شبكة خبراء ومدربي ليدمايندز، ويتم تقديمه كمستشار ومدرب ومرشد أعمال ومدرب قيادة تنفيذية.</p>
+                        <button class="button button-secondary read-more-btn" aria-label="اقرأ المزيد عن هشام نابي">قراءة المزيد</button>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- single profile viewer modal shell -->
+    <div class="team-modal" id="profile-modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-header-info">
+                    <h2 id="modal-name"></h2>
+                    <p class="role" id="modal-role"></p>
+                </div>
+                <div class="modal-header-actions">
+                    <button class="modal-nav-btn prev-btn" aria-label="السابق">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <button class="modal-nav-btn next-btn" aria-label="التالي">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                    <button class="modal-close" aria-label="إغلاق">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-img-col">
+                    <div class="modal-img-wrapper">
+                        <img id="modal-img" src="" alt="" class="fade-in-img" loading="lazy">
+                    </div>
+                </div>
+                <div class="modal-info-col">
+                    <ul class="modal-bullets" id="modal-bullets"></ul>
+                    <div class="modal-bio" id="modal-bio"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
-
-  <main id="home">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">Corporate Learning Partner</span>
-          <h1>Build stronger leaders, smarter teams, and practical learning systems.</h1>
-          <p class="lead">Lead Mines helps organizations design leadership programs, capability-building journeys, and talent development experiences that connect learning to real workplace performance.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#contact">Request a Discovery Call</a>
-            <a class="button button-secondary" href="#programs">Explore Programs</a>
-          </div>
-          <div class="hero-pills">
-            <span class="pill">Leadership Development</span>
-            <span class="pill">HR Capability Building</span>
-            <span class="pill">Learning Journey Design</span>
-            <span class="pill">Talent Readiness</span>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <img src="https://images.pexels.com/photos/7526590/pexels-photo-7526590.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Workshop and training session">
-          <div class="hero-overlay">
-            <strong>Programs built for real teams</strong>
-            <p>From diagnosis to delivery and follow-through, we shape development solutions around your actual business context.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Why Lead Mines</span>
-          <h2>We go beyond training delivery to design growth that fits the organization.</h2>
-          <p>Strong development work is not only about a workshop. It is about understanding the challenge, selecting the right audience, designing the right learning format, and supporting application after the session ends.</p>
-        </div>
-
-        <div class="stats-grid">
-          <article class="stat">
-            <strong>120+</strong>
-            <span>Organizations supported</span>
-          </article>
-          <article class="stat">
-            <strong>4,500+</strong>
-            <span>Learners and managers engaged</span>
-          </article>
-          <article class="stat">
-            <strong>18,000+</strong>
-            <span>Training and facilitation hours</span>
-          </article>
-          <article class="stat">
-            <strong>85+</strong>
-            <span>Custom development programs</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Services</span>
-          <h2>Premium learning and development services for growing teams.</h2>
-          <p>Our work focuses on leadership, capability building, learning strategy, and practical development systems for organizations that want more than one-off training events.</p>
-        </div>
-
-        <div class="cards-grid">
-          <article class="card">
-            <h3>Learning Strategy Design</h3>
-            <p>We help organizations identify development priorities, define target groups, and shape a practical roadmap for capability growth.</p>
-          </article>
-          <article class="card">
-            <h3>Leadership Development Programs</h3>
-            <p>We design leadership experiences for new managers, middle managers, and high-potential talent with a strong focus on application.</p>
-          </article>
-          <article class="card">
-            <h3>Capability and Talent Assessment</h3>
-            <p>We support HR and talent teams in evaluating readiness, identifying skill gaps, and turning assessment insights into development action.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container cta-wrap">
-        <article class="highlight">
-          <div class="section-head">
-            <span class="eyebrow">Field Focus</span>
-            <h3>Who we support</h3>
-            <p>We typically work with organizations that need clearer learning structures, stronger managers, or more mature talent development systems.</p>
-          </div>
-          <ul>
-            <li>HR and organizational development teams</li>
-            <li>New managers and middle leaders</li>
-            <li>Internal learning academies and graduate programs</li>
-            <li>High-growth companies and scaling teams</li>
-          </ul>
-        </article>
-
-        <article class="highlight">
-          <div class="section-head">
-            <span class="eyebrow">Visual Story</span>
-            <h3>Built for modern teams</h3>
-            <p>Our approach combines structure, clarity, and practical implementation to make learning more useful in real work environments.</p>
-          </div>
-          <div class="media-grid">
-            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Team collaboration">
-            <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Leadership team meeting">
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Methodology</span>
-          <h2>From diagnosis to behavior change.</h2>
-          <p>We use a simple, focused model to keep development work aligned with organizational needs and easier to implement across teams.</p>
-        </div>
-
-        <div class="process-grid">
-          <article class="card process-card">
-            <span class="process-index">01</span>
-            <h3>Understand the Challenge</h3>
-            <p>We begin with the team context, business need, performance gaps, and audience profile.</p>
-          </article>
-          <article class="card process-card">
-            <span class="process-index">02</span>
-            <h3>Design the Journey</h3>
-            <p>We shape the right mix of sessions, practice, assignments, and follow-up touchpoints.</p>
-          </article>
-          <article class="card process-card">
-            <span class="process-index">03</span>
-            <h3>Activate the Impact</h3>
-            <p>We support implementation and connect learning back to workplace behavior and team performance.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="programs">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Programs</span>
-          <h2>Featured programs with practical outcomes.</h2>
-          <p>Each program is built around a clear audience, a clear development goal, and practical skills that can be used immediately in the workplace.</p>
-        </div>
-
-        <div class="cards-grid">
-          <article class="card">
-            <h3>Leadership Essentials Bootcamp</h3>
-            <p>Designed for new managers and team leads who need stronger communication, delegation, accountability, and performance management habits.</p>
-            <ul>
-              <li>Duration: 6 weeks</li>
-              <li>Audience: New managers and team leads</li>
-              <li>Outcome: Better role clarity and team leadership</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>HR Capability Assessor</h3>
-            <p>Supports HR professionals in evaluating skills, reading readiness, and building more useful development recommendations.</p>
-            <ul>
-              <li>Duration: 4 weeks</li>
-              <li>Audience: HR business partners and talent teams</li>
-              <li>Outcome: Stronger assessment and development planning</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Coaching Culture Accelerator</h3>
-            <p>Helps organizations embed stronger feedback, questioning, and manager enablement practices to build a healthier coaching culture.</p>
-            <ul>
-              <li>Duration: 8 weeks</li>
-              <li>Audience: Middle managers and internal coaches</li>
-              <li>Outcome: Better feedback and empowerment practices</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="insights">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Insights</span>
-          <h2>Thoughtful content on leadership, learning, and development.</h2>
-          <p>We added more meaningful domain content so the site speaks clearly to HR teams, learning leaders, and organizational decision-makers.</p>
-        </div>
-
-        <div class="cards-grid">
-          <article class="card">
-            <h3>How leadership development connects to business results</h3>
-            <p>Leadership programs become more valuable when they target real issues like decision-making quality, follow-through, team alignment, and manager behavior.</p>
-          </article>
-          <article class="card">
-            <h3>What talent assessment should actually measure</h3>
-            <p>Great assessment looks beyond current performance to include readiness, learning agility, and the support needed for future growth.</p>
-          </article>
-          <article class="card">
-            <h3>How to build a continuous learning culture</h3>
-            <p>Learning becomes sustainable when it is linked to real work, supported by managers, and reinforced through structured follow-up.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container contact-grid">
-        <article class="contact-panel">
-          <div class="section-head">
-            <span class="eyebrow">Contact</span>
-            <h2>Start with a short conversation.</h2>
-            <p>Tell us what your team needs and we will suggest the most suitable program, learning format, or development scope.</p>
-          </div>
-          <div class="contact-points">
-            <span class="contact-chip">Phone: 01556969501</span>
-            <span class="contact-chip">Email: support@leadmines.com</span>
-            <span class="contact-chip">Location: Cairo, Egypt</span>
-            <span class="contact-chip">Hours: Sunday to Thursday, 10 AM to 6 PM</span>
-          </div>
-        </article>
-
-        <article class="cta-box">
-          <div class="cta-copy">
-            <span class="eyebrow">Request a Call</span>
-            <h2>Share your need and we’ll guide the next step.</h2>
-            <p class="muted">This lightweight demo keeps form behavior simple and fast. You can later connect it to Formspree, EmailJS, WhatsApp, or your preferred backend.</p>
-          </div>
-
-          <form class="form-grid" data-demo-form>
-            <input class="input" name="name" placeholder="Full name" required>
-            <input class="input" name="company" placeholder="Company name" required>
-            <input class="input" name="phone" placeholder="Phone number" required>
-            <input class="input" type="email" name="email" placeholder="Email address" required>
-            <input class="input full" name="topic" placeholder="Program or topic of interest" required>
-            <textarea class="textarea full" name="message" placeholder="Briefly describe your team need"></textarea>
-            <button class="button button-primary full" type="submit">Submit Request</button>
-          </form>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
+</main>
+<footer class="footer footer-compact">
     <div class="container">
-      <div class="footer-grid">
-        <article class="footer-card">
-          <h4>Lead Mines</h4>
-          <p>Premium learning and organizational development solutions designed to strengthen teams, leaders, and capability systems.</p>
-        </article>
-        <article class="footer-card">
-          <h4>Quick Links</h4>
-          <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#programs">Programs</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </article>
-        <article class="footer-card">
-          <h4>Connect</h4>
-          <div class="social-row">
-            <a href="#" aria-label="Facebook">Fb</a>
-            <a href="#" aria-label="Instagram">Ig</a>
-            <a href="#" aria-label="LinkedIn">In</a>
-          </div>
-        </article>
-        <article class="footer-card">
-          <h4>Reach Us</h4>
-          <p>support@leadmines.com</p>
-          <p>01556969501</p>
-          <p>Cairo, Egypt</p>
-        </article>
-      </div>
-      <div class="footer-bottom">
-        <span>Lead Mines</span>
-        <span>All rights reserved 2026</span>
-      </div>
+        <div class="footer-shell">
+            <div class="footer-summary">
+                <strong>LeadMinds</strong>
+                <p>حلول متقدمة للتعلم والتطوير المؤسسي مصممة لتقوية الفرق والقادة وأنظمة بناء القدرات.</p>
+            </div>
+
+            <div class="footer-inline-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html">من نحن</a>
+                <a href="courses.html">الدورات</a>
+                <a href="blog.html">المقالات المعرفية</a>
+                <a href="contact.html">تواصل معنا</a>
+            </div>
+
+            <div class="footer-contact-row">
+                <span>info@leadmindsgroup.com</span>
+                <span>www.leadmindsgroup.com</span>
+                <span>المملكة العربية السعودية</span>
+            </div>
+
+            <div class="footer-actions-row footer-actions-icons">
+                <button class="icon-button icon-button-support" type="button" data-chat-open aria-label="الدعم"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a8 8 0 0 0-8 8v5a3 3 0 0 0 3 3h1a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H6a6 6 0 1 1 12 0h-2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2a3 3 0 0 1-3 3h-2a1 1 0 1 0 0 2h2a5 5 0 0 0 5-5 3 3 0 0 0 1-2v-5a8 8 0 0 0-8-8Z"/></svg></button>
+                <div class="social-row">
+                    <a href="https://www.linkedin.com/company/leadmindsgroup" target="_blank" rel="noreferrer">LinkedIn</a>
+                </div>
+            </div>
+            </div>
+
+            <div class="footer-bottom footer-bottom-compact">
+                <span>&copy; 2026 LeadMinds. جميع الحقوق محفوظة.</span>
+                <span>تطوير القيادات وبناء القدرات</span>
+            </div>
+        </div>
     </div>
-  </footer>
+</footer>
 
-  <div class="floating-bar" aria-label="Quick actions">
-    <a class="button button-secondary" href="tel:01556969501">Call</a>
-    <a class="button button-primary" href="https://wa.me/201556969501" target="_blank" rel="noreferrer">WhatsApp</a>
-  </div>
+<div class="floating-bar floating-bar-icons" aria-label="إجراءات سريعة">
+    <button class="icon-button icon-button-support" type="button" data-chat-open aria-label="الدعم"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a8 8 0 0 0-8 8v5a3 3 0 0 0 3 3h1a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H6a6 6 0 1 1 12 0h-2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2a3 3 0 0 1-3 3h-2a1 1 0 1 0 0 2h2a5 5 0 0 0 5-5 3 3 0 0 0 1-2v-5a8 8 0 0 0-8-8Z"/></svg></button>
+</div>
 
-  <script>
-    const navToggle = document.querySelector("[data-nav-toggle]");
-    const nav = document.querySelector("[data-nav]");
-
-    if (navToggle && nav) {
-      navToggle.addEventListener("click", () => {
-        const isOpen = nav.classList.toggle("open");
-        navToggle.setAttribute("aria-expanded", String(isOpen));
-      });
-
-      nav.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          nav.classList.remove("open");
-          navToggle.setAttribute("aria-expanded", "false");
-        });
-      });
-    }
-
-    document.querySelectorAll("[data-demo-form]").forEach((form) => {
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        alert("Your request was captured locally. You can now connect this form to any service you prefer.");
-        form.reset();
-      });
-    });
-  </script>
+<aside class="chat-widget" data-chat-widget hidden>
+    <div class="chat-widget__header">
+        <strong>دردشة الدعم</strong>
+        <button class="chat-widget__close" type="button" aria-label="إغلاق" data-chat-close>&times;</button>
+    </div>
+    <div class="chat-widget__messages" data-chat-messages>
+        <div class="chat-widget__bubble bot">مرحبًا، اسأل عن البرامج التدريبية أو المقالات أو حجز مكالمة تعريفية.</div>
+    </div>
+    <form class="chat-widget__form" method="post" data-chat-form data-endpoint="#">
+        <input type="hidden" name="_csrf_token" value="fa07e662f8c32b26787c3ff50d54d7277eef441cd2b8b0c7feac731448376a95">        <input class="input" type="text" name="message" placeholder="اكتب رسالتك..." required>
+        <button class="button button-primary" type="submit">إرسال</button>
+    </form>
+</aside>
 </body>
 </html>
+
+The above content shows the entire, complete file contents of the requested file.
